@@ -1,21 +1,22 @@
 print("*********************************")
-print("Guess a number games!")
+print("Bem vindo ao jogo de Adivinhação!")
 print("*********************************")
 
-secret = 5
+numero_secreto = 5
 
-guess = input("Type a number from 0 to 10: ")
+chute_str = input("Digite um número entre 0 e 10: ")
+print("Você digitou " , chute_str)
+chute = int(chute_str)
 
-your_guess = int(guess)
+acertou = chute == numero_secreto
+maior = chute > numero_secreto
+menor = chute < numero_secreto
 
-acertou = your_guess == secret
-maior = your_guess > secret
-menor = your_guess < secret
+if(acertou):
+    print("Parabéns! Você acertou!")
+elif(maior):
+        print("O seu chute foi maior do que o número secreto!")
+elif(menor):
+        print("O seu chute foi menor do que o número secreto!")
 
-if (acertou):
-    print("Você acertou!")
-else:
-    if (maior):
-        print("Você errou! O seu chute foi maior que o número secreto.")
-    elif (menor):
-        print("Você errou! O seu chute foi menor que o número secreto.")
+print("Fim do jogo")
