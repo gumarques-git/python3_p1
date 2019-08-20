@@ -14,11 +14,7 @@ while(rodada <= tentativas):
     print("Você digitou " , chute)
     if chute not in range(1,10):
         print("Número incorreto!!!", "\n")
-        continue
-
-#    chute_str = int(input("Digite um número entre 0 e 10: "))
-#    print("Você digitou " , chute_str)
-#    chute = int(chute_str)
+        continue # pula o codigo abaixo e volta ao inicio do loop
 
     acertou = chute == numero_secreto
     maior = chute > numero_secreto
@@ -26,7 +22,7 @@ while(rodada <= tentativas):
 
     if(acertou):
         print("Parabéns! Você acertou!", "\n")
-        exit() #sai do jogo se acertar
+        exit() # sai do loop se acertar
     elif(maior):
             print("O seu chute foi maior do que o número secreto!", "\n")
     elif(menor):
