@@ -9,7 +9,7 @@ tentativas = 3
 rodada = 1
 
 while(rodada <= tentativas):
-    print('Tentativa ', rodada, ' de ', tentativas, '.')
+    print('Tentativa {} de {}.'.format(rodada, tentativas)) #String Interpolation
     chute = int(input("Digite um número entre 1 e 10: "))
     print("Você digitou " , chute)
     if chute not in range(1,10):
