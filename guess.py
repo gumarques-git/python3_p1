@@ -1,30 +1,49 @@
 # -*- coding: UTF-8 -*-
+import random
 
-print("*********************************")
-print("Bem vindo ao jogo de Adivinhação!")
-print("*********************************")
+def jogar():
+    print("*********************************")
+    print("Bem vindo ao jogo de Adivinhação!")
+    print("*********************************")
 
-numero_secreto = 5
-tentativas = 4
+    #Procedure utilizando dictionary simulando um Swith Case
+    def retorna(x):
+        return {'1': 20, '2': 12, '3': 8, '4': 2}[x]     #.get(x, 9)   # para usar default, 9 is default if x not found
 
-for rodada in range(1,tentativas + 1):
-    print('Tentativa {} de {}.'.format(rodada, tentativas)) #String Interpolation
-    chute = int(input("Digite um número entre 1 e 10: "))
-    print("Você digitou " , chute)
-    if (chute < 1 or chute >10):
-        print("Número incorreto!!!", "\n")
-        continue # pula o codigo abaixo e volta ao inicio do loop
 
-    acertou = chute == numero_secreto
-    maior = chute > numero_secreto
-    menor = chute < numero_secreto
+    print('Escolha o nivel de dificuldade:')
+    nivel  = input('(1) Facil (2) Medio (3) Dificil (4) Nightmare: ')
 
-    if(acertou):
-        print("Parabéns! Você acertou!", "\n")
-        break # sai do loop se acertar
-    elif(maior):
-            print("O seu chute foi maior do que o número secreto!", "\n")
-    elif(menor):
-            print("O seu chute foi menor do que o número secreto!", "\n")
+    tentativas = retorna(nivel)
+    numero_secreto = random.randrange(1,101)
+    pontos = 1000
 
-print("Fim do jogo")
+    for rodada in range(1,tentativas + 1):
+        print('Tentativa {} de {}.'.format(rodada, tentativas)) #String Interpolation
+        chute = int(input("Digite um número entre 1 e 100: "))
+        print("Você digitou " , chute)
+        if (chute < 1 or chute >100):
+            print("Número incorreto!!!", "\n")
+            continue # pula o codigo abaixo e volta ao inicio do loop
+
+        acertou = chute == numero_secreto
+        maior = chute > numero_secreto
+        menor = chute < numero_secreto
+
+        if(acertou):
+            print("Parabéns! Você acertou e fez {} pontos!".format(pontos), "\n")
+            break # sai do loop se acertar
+        elif(maior):
+                print("O seu chute foi maior do que o número secreto!", "\n")
+        elif(menor):
+                print("O seu chute foi menor do que o número secreto!", "\n")
+
+        pontos_perdidos = abs(numero_secreto - chute)
+        pontos = pontos - pontos_perdidos
+
+
+    print("Fim do jogo.\n")
+
+
+if __name__ == "__main__":
+    jogar()
