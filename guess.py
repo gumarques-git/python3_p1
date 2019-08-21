@@ -10,7 +10,6 @@ def jogar():
     def retorna(x):
         return {'1': 20, '2': 12, '3': 8, '4': 2}[x]     #.get(x, 9)   # para usar default, 9 is default if x not found
 
-
     print('Escolha o nivel de dificuldade:')
     nivel  = input('(1) Facil (2) Medio (3) Dificil (4) Nightmare: ')
 
@@ -28,22 +27,19 @@ def jogar():
 
         acertou = chute == numero_secreto
         maior = chute > numero_secreto
-        menor = chute < numero_secreto
 
         if(acertou):
             print("Parabéns! Você acertou e fez {} pontos!".format(pontos), "\n")
             break # sai do loop se acertar
         elif(maior):
-                print("O seu chute foi maior do que o número secreto!", "\n")
-        elif(menor):
-                print("O seu chute foi menor do que o número secreto!", "\n")
+            print("O seu chute foi maior do que o número secreto!", "\n")
+        else:
+            print("O seu chute foi menor do que o número secreto!", "\n")
 
         pontos_perdidos = abs(numero_secreto - chute)
         pontos = pontos - pontos_perdidos
 
-
     print("Fim do jogo.\n")
-
 
 if __name__ == "__main__":
     jogar()
