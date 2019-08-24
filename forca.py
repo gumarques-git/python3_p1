@@ -6,7 +6,7 @@ def jogar():
     print("*********************************")
 
     palavra_secreta = "banana".upper()
-    letras_acertadas = ['_', '_', '_', '_', '_', '_']
+    letras_acertadas = ['_' for letra in palavra_secreta]  #Usando o List Comprehension
 
     enforcou = False
     acertou = False
@@ -29,7 +29,7 @@ def jogar():
             erros += 1
             print("Ops, você errou! Faltam {} tentativas.".format(len(palavra_secreta) - erros))
 
-        enforcou = erros == len(palavra_secreta)
+        enforcou = erros == 7 # 7 é a quantidade de letras para formar o boneco.
         acertou = '_' not in letras_acertadas
 
         print(letras_acertadas, '\n')
